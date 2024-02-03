@@ -23,6 +23,8 @@ public class Invoice {
     public void addProduct(Product product, Integer quantity) {
        if (quantity<=0)
            throw new IllegalArgumentException("Quantity must be grater than zero.");
+        if (product == null)
+            throw  new IllegalArgumentException("Product can't be null.");
         for (int i = 0; i < quantity; i++) {
             products.add(product);
         }
