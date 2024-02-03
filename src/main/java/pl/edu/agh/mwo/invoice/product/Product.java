@@ -12,11 +12,11 @@ public abstract class Product {
     private final BigDecimal taxPercent;
 
     protected Product(String name, BigDecimal price, BigDecimal tax) {
-        if (name.isEmpty()   )
+        if (name.isEmpty())
             throw new IllegalArgumentException();
         this.name = name;
-
-        this.price = price;
+        if (price.compareTo(new BigDecimal(0)) < 0)
+            this.price = price;
         this.taxPercent = tax;
     }
 
