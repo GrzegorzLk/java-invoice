@@ -3,7 +3,6 @@ package pl.edu.agh.mwo.invoice;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import pl.edu.agh.mwo.invoice.product.Product;
 
@@ -30,7 +29,7 @@ public class Invoice {
         }
     }
 
-    public BigDecimal getSubtotal() {
+    public BigDecimal getNetPrice() {
 
         BigDecimal subtotal = BigDecimal.ZERO;
         for (Product product: products
@@ -50,7 +49,7 @@ public class Invoice {
         return tax;
     }
 
-    public BigDecimal getTotal()
+    public BigDecimal getGrossPrice()
     {
         BigDecimal total = BigDecimal.ZERO;
         for (Product product: products
