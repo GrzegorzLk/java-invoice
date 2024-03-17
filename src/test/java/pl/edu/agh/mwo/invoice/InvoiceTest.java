@@ -7,7 +7,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import pl.edu.agh.mwo.invoice.Invoice;
 import pl.edu.agh.mwo.invoice.product.DairyProduct;
 import pl.edu.agh.mwo.invoice.product.OtherProduct;
 import pl.edu.agh.mwo.invoice.product.Product;
@@ -18,14 +17,20 @@ public class InvoiceTest {
 
     @Before
     public void createEmptyInvoiceForTheTest() {
-        invoice = new Invoice(0);
+        invoice = new Invoice();
     }
-
     @Test
-    public void InvoiceTest()
+    public void testNextInvoiceHasNextNumber()
     {
-        Assert.assertThat(0, Matchers.comparesEqualTo(invoice.getInvoiceNumber()));
-   }
+        int number1 = new Invoice().getNumber();
+        int number2 = new Invoice().getNumber();
+        Assert.assertEquals(number2 , number1+1);
+    }
+    @Test
+    public void testInvoiceNumberGraterThenZero()
+    {
+        Assert.assertThat(new Invoice().getNumber(), Matchers.greaterThan(0));
+    }
 
     @Test
     public void testEmptyInvoiceHasEmptySubtotal() {

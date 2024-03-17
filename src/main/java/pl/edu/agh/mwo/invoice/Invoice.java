@@ -7,12 +7,14 @@ import java.util.Map;
 import pl.edu.agh.mwo.invoice.product.Product;
 
 public class Invoice {
-    public Invoice(int invoiceNumber)
+    static int InvoiceCount;
+    final int invoiceNumber;
+
+    public Invoice()
     {
-        this.invoiceNumber = invoiceNumber;
+        invoiceNumber = ++InvoiceCount;
     }
-    private int invoiceNumber;
-    private Map<Product, Integer> products = new HashMap<Product, Integer>();
+    private Map<Product, Integer> products = new HashMap<>();
 
     public void addProduct(Product product) {
         addProduct(product, 1);
@@ -47,7 +49,7 @@ public class Invoice {
         return totalGross;
     }
 
-    public int getInvoiceNumber() {
+    public int getNumber() {
         return invoiceNumber;
     }
 }
