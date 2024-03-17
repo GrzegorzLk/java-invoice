@@ -52,4 +52,8 @@ public class Invoice {
     public int getNumber() {
         return invoiceNumber;
     }
+
+    public String Print() {
+        return "Invoice No. " + invoiceNumber;
+    }
 }

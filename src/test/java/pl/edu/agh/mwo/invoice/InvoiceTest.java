@@ -19,16 +19,23 @@ public class InvoiceTest {
     public void createEmptyInvoiceForTheTest() {
         invoice = new Invoice();
     }
+
     @Test
-    public void testNextInvoiceHasNextNumber()
+    public void testInvoiceNumberOnInvoicePrint()
     {
+        String testString = "Invoice No. " + invoice.getNumber();
+        Assert.assertTrue(invoice.Print().contains(testString));
+    }
+
+    @Test
+    public void testNextInvoiceHasNextNumber() {
         int number1 = new Invoice().getNumber();
         int number2 = new Invoice().getNumber();
-        Assert.assertEquals(number2 , number1+1);
+        Assert.assertEquals(number2, number1 + 1);
     }
+
     @Test
-    public void testInvoiceNumberGraterThenZero()
-    {
+    public void testInvoiceNumberGraterThenZero() {
         Assert.assertThat(new Invoice().getNumber(), Matchers.greaterThan(0));
     }
 
