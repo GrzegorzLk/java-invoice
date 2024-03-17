@@ -18,8 +18,14 @@ public class InvoiceTest {
 
     @Before
     public void createEmptyInvoiceForTheTest() {
-        invoice = new Invoice();
+        invoice = new Invoice(0);
     }
+
+    @Test
+    public void InvoiceTest()
+    {
+        Assert.assertThat(0, Matchers.comparesEqualTo(invoice.getInvoiceNumber()));
+   }
 
     @Test
     public void testEmptyInvoiceHasEmptySubtotal() {
