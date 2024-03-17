@@ -10,10 +10,10 @@ public class Invoice {
     static int InvoiceCount;
     final int invoiceNumber;
 
-    public Invoice()
-    {
+    public Invoice() {
         invoiceNumber = ++InvoiceCount;
     }
+
     private Map<Product, Integer> products = new HashMap<>();
 
     public void addProduct(Product product) {
