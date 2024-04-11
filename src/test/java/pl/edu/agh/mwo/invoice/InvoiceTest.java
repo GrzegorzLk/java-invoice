@@ -24,7 +24,7 @@ public class InvoiceTest {
     public void testInvoiceNumberOnInvoicePrint()
     {
         String testString = "Invoice No. " + invoice.getNumber();
-        Assert.assertTrue(invoice.Print().contains(testString));
+        Assert.assertTrue(invoice.print().contains(testString));
     }
 
     @Test

@@ -53,7 +53,7 @@ public class Invoice {
         return invoiceNumber;
     }
 
-    public String Print() {
+    public String print() {
         return "Invoice No. " + invoiceNumber + " !";
     }
 }
