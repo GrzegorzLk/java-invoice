@@ -54,6 +54,6 @@ public class Invoice {
     }
 
     public String Print() {
-        return "Invoice No. " + invoiceNumber;
+        return "Invoice No. " + invoiceNumber + " !";
     }
 }
