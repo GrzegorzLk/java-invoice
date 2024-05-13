@@ -25,7 +25,7 @@ public class ExciseProduct extends Product {
         return fixedPromotion;
     }
 
-    public void setFixedPromotion(BigDecimal promotion){
+    public void setFixedPromotion(BigDecimal promotion) {
         fixedPromotion = promotion;
     }
 

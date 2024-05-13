@@ -9,8 +9,8 @@ public class FuelCanister extends ExciseProduct {
         if (isTaxFreeDay)
             super.setFixedPromotion(super.getExciseTaxValue());
     }
-    public FuelCanister(String name, BigDecimal price)
-    {
+
+    public FuelCanister(String name, BigDecimal price) {
         this(name, price, false);
     }
 }
