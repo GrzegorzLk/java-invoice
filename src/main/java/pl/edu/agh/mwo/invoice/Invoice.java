@@ -57,10 +57,12 @@ public class Invoice {
         return "Invoice No. " + invoiceNumber + " !";
     }
 
-    public String printProducts(){
+    public String printProducts() {
+        String exitString = "";
         for (Product product : products.keySet()) {
-
+            exitString += System.lineSeparator();
         }
-        return  "";
+        exitString += "Liczba pozycji: " + products.size();
+        return "";
     }
 }

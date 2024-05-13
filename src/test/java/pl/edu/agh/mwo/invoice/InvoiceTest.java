@@ -28,7 +28,7 @@ public class InvoiceTest {
 
     @Test
     public void testEmptyInvoicePrintProducts() {
-        Assert.assertEquals("", invoice.printProducts());
+        Assert.assertEquals("Liczba pozycji: 0", invoice.printProducts());
     }
 
     @Test
