@@ -21,10 +21,14 @@ public class InvoiceTest {
     }
 
     @Test
-    public void testInvoiceNumberOnInvoicePrint()
-    {
+    public void testInvoiceNumberOnInvoicePrint() {
         String testString = "Invoice No. " + invoice.getNumber();
         Assert.assertTrue(invoice.print().contains(testString));
+    }
+
+    @Test
+    public void testEmptyInvoicePrintProducts() {
+        Assert.assertEquals("", invoice.printProducts());
     }
 
     @Test

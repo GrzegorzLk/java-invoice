@@ -56,4 +56,11 @@ public class Invoice {
     public String print() {
         return "Invoice No. " + invoiceNumber + " !";
     }
+
+    public String printProducts(){
+        for (Product product : products.keySet()) {
+
+        }
+        return  "";
+    }
 }
