@@ -27,6 +27,16 @@ public class InvoiceTest {
     }
 
     @Test
+    public void testAddSameTypeProduct() {
+        Product testProduct = new TaxFreeProduct("Type1Product", new BigDecimal("10"));
+        invoice.addProduct(testProduct);
+        invoice.addProduct(testProduct);
+        invoice.addProduct(testProduct, 2);
+        Assert.assertEquals("Liczba pozycji: 1", invoice.printProducts().split(System.lineSeparator())[2]);
+        Assert.assertEquals("Type1Product 4", invoice.printProducts().split(System.lineSeparator())[1]);
+    }
+
+    @Test
     public void testInvoicePrintProductsCorrectProducts() {
         invoice.addProduct(new TaxFreeProduct("TaxFreeProduct01", new BigDecimal("10")));
         invoice.addProduct(new TaxFreeProduct("TaxFreeProduct02", new BigDecimal("10")), 2);
