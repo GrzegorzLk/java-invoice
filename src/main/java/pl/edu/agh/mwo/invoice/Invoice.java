@@ -58,11 +58,11 @@ public class Invoice {
     }
 
     public String printProducts() {
-        String exitString = "";
+        StringBuilder exitString = new StringBuilder();
         for (Product product : products.keySet()) {
-            exitString += System.lineSeparator();
+            exitString.append(System.lineSeparator());
         }
-        exitString += "Liczba pozycji: " + products.size();
-        return "";
+        exitString.append("Liczba pozycji: ").append(products.size());
+        return exitString.toString();
     }
 }
