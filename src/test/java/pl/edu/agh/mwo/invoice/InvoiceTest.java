@@ -7,10 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import pl.edu.agh.mwo.invoice.product.DairyProduct;
-import pl.edu.agh.mwo.invoice.product.OtherProduct;
-import pl.edu.agh.mwo.invoice.product.Product;
-import pl.edu.agh.mwo.invoice.product.TaxFreeProduct;
+import pl.edu.agh.mwo.invoice.product.*;
 
 public class InvoiceTest {
     private Invoice invoice;
@@ -18,6 +15,18 @@ public class InvoiceTest {
     @Before
     public void createEmptyInvoiceForTheTest() {
         invoice = new Invoice();
+    }
+
+    @Test
+    public void testInvoiceHasProperTaxValueForExciseProducts() {
+        Product wine = new BottleOfWine("WineTest", new BigDecimal("100"));
+        Assert.assertThat(new BigDecimal("128.56"), Matchers.comparesEqualTo(wine.getPriceWithTax()));
+
+        Product fuel1withTax = new FuelCanister("fuel", new BigDecimal("100"));
+        Assert.assertThat(new BigDecimal("128.56"), Matchers.comparesEqualTo(fuel1withTax.getPriceWithTax()));
+
+        Product fuel2withoutTax = new FuelCanister("fuel witout tax", new BigDecimal("100"), true);
+        Assert.assertThat(new BigDecimal("123"), Matchers.comparesEqualTo(fuel2withoutTax.getPriceWithTax()));
     }
 
     @Test
