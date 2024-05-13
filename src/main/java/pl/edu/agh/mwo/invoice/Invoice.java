@@ -2,6 +2,7 @@ package pl.edu.agh.mwo.invoice;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import pl.edu.agh.mwo.invoice.product.Product;
@@ -54,13 +55,17 @@ public class Invoice {
     }
 
     public String print() {
-        return "Invoice No. " + invoiceNumber + " !";
+        return "Invoice No. " + invoiceNumber;
     }
 
     public String printProducts() {
         StringBuilder exitString = new StringBuilder();
-        for (Product product : products.keySet()) {
-            exitString.append(System.lineSeparator());
+        exitString.append(print()).append(System.lineSeparator());
+        List<Product> sortedProducts = products.keySet().stream()
+                .sorted((a, b) -> a.getName().compareToIgnoreCase(b.getName())).toList();
+        for (Product product : sortedProducts) {
+            exitString.append(product.getName()).append(" ").append(products.get(product))
+                    .append(System.lineSeparator());
         }
         exitString.append("Liczba pozycji: ").append(products.size());
         return exitString.toString();

@@ -27,14 +27,35 @@ public class InvoiceTest {
     }
 
     @Test
+    public void testInvoicePrintProductsCorrectProducts() {
+        invoice.addProduct(new TaxFreeProduct("TaxFreeProduct01", new BigDecimal("10")));
+        invoice.addProduct(new TaxFreeProduct("TaxFreeProduct02", new BigDecimal("10")), 2);
+        invoice.addProduct(new TaxFreeProduct("TaxFreeProduct03", new BigDecimal("10")), 3);
+        invoice.addProduct(new TaxFreeProduct("TaxFreeProduct04", new BigDecimal("10")), 4);
+        invoice.addProduct(new TaxFreeProduct("TaxFreeProduct05", new BigDecimal("10")), 5);
+
+        System.out.println(invoice.printProducts());
+
+        String[] printedLines = invoice.printProducts().split(System.lineSeparator());
+        Assert.assertEquals("Invoice No. " + invoice.getNumber(), printedLines[0]);
+        Assert.assertEquals("TaxFreeProduct01 1", printedLines[1]);
+        Assert.assertEquals("TaxFreeProduct02 2", printedLines[2]);
+        Assert.assertEquals("TaxFreeProduct03 3", printedLines[3]);
+        Assert.assertEquals("TaxFreeProduct04 4", printedLines[4]);
+        Assert.assertEquals("TaxFreeProduct05 5", printedLines[5]);
+
+        Assert.assertEquals("Liczba pozycji: 5", printedLines[6]);
+    }
+
+    @Test
     public void testInvoicePrintProductsCorrectProductsNo() {
         String[] printedLines = invoice.printProducts().split(System.lineSeparator());
-        Assert.assertEquals("Liczba pozycji: 0", printedLines[printedLines.length-1]);
+        Assert.assertEquals("Liczba pozycji: 0", printedLines[printedLines.length - 1]);
 
         invoice.addProduct(new TaxFreeProduct("TaxFreeProduct01", new BigDecimal("10")));
 
         printedLines = invoice.printProducts().split(System.lineSeparator());
-        Assert.assertEquals("Liczba pozycji: 1", printedLines[printedLines.length-1]);
+        Assert.assertEquals("Liczba pozycji: 1", printedLines[printedLines.length - 1]);
 
         invoice.addProduct(new TaxFreeProduct("TaxFreeProduct02", new BigDecimal("10")));
         invoice.addProduct(new TaxFreeProduct("TaxFreeProduct03", new BigDecimal("10")));
@@ -42,12 +63,13 @@ public class InvoiceTest {
         invoice.addProduct(new TaxFreeProduct("TaxFreeProduct05", new BigDecimal("10")));
 
         printedLines = invoice.printProducts().split(System.lineSeparator());
-        Assert.assertEquals("Liczba pozycji: 5", printedLines[printedLines.length-1]);
+        Assert.assertEquals("Liczba pozycji: 5", printedLines[printedLines.length - 1]);
     }
 
     @Test
     public void testEmptyInvoicePrintProducts() {
-        Assert.assertEquals("Liczba pozycji: 0", invoice.printProducts());
+        Assert.assertEquals("Invoice No. " + invoice.getNumber() + System.lineSeparator() +
+                "Liczba pozycji: 0", invoice.printProducts());
     }
 
     @Test
